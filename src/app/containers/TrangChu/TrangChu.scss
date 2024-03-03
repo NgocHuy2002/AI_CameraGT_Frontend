@@ -1,0 +1,60 @@
+
+.chart-columns {
+  width: 98%;
+  //margin-left: 2%;
+  height: 350px;
+  margin-bottom: 25px;
+}
+
+.chart-tontai {
+  width: 98%;
+  height: 350px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.chart-loai-cong-viec {
+  width: 98%;
+  //margin-left: 2%;
+  height: 350px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.card-phieu-giao, .card-phieu-nhan, .card-thuc-hien, .card-xac-nhan {
+  //width: 95%;
+  margin: 10px 10px 20px;
+  height: 150px;
+  text-align: center;
+  padding-top: 2.5%;
+}
+
+.card-phieu-giao {
+  background: linear-gradient(45deg, #321fdb, #1f1498) !important;
+}
+
+.card-phieu-nhan {
+  background: linear-gradient(45deg, #39f, #2982cc) !important;
+}
+
+.card-thuc-hien {
+  background: linear-gradient(45deg, #f9b115, #f6960b) !important;
+}
+
+.card-xac-nhan {
+  background: linear-gradient(45deg, #e55353, #d93737) !important;
+}
+
+.card-right {
+  @media screen and (min-width: 1280px) {
+    margin-left: 15px;
+  }
+
+  @media screen and (max-width: 1278px) {
+    margin-top: 15px;
+  }
+}
+
+.ant-empty_chart {
+  padding: 38.5px
+}

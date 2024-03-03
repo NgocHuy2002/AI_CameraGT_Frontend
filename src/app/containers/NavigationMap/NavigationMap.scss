@@ -1,0 +1,11 @@
+@import "src/styles/scroll";
+
+.table-list-of-car{
+  .ant-table-body{
+    @extend .custom-scrollbar;
+    @extend .custom-scrollbar-show;
+  }
+}
+.leaflet-routing-container{
+  display: none;
+}
