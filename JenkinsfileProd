@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    stages {
+        stage('Init') {
+            steps {
+                echo 'Testing..'
+                telegramSend(message: 'Building Job tCameraAI Web - Nhan Hoa...', chatId: -740504133)
+            }
+        }
+        stage ('Deployments') {
+            steps {
+                echo 'Deploying to Production environment...'
+                echo 'Copy project over SSH...'
+                sshPublisher(publishers: [
+                    sshPublisherDesc(
+                        configName: 'nhanhoa232',
+                        transfers:
+                            [sshTransfer(
+                                cleanRemote: false,
+                                excludes: '',
+                                execCommand: "docker build -t tcameraaiweb ./thinklabsdev/tcameraaiwebCI/ \
+                                    && docker service rm tcameraai_web || true \
+                                    && docker stack deploy -c ./thinklabsdev/tcameraaiwebCI/docker-compose-prod.yml tcameraai \
+                                    && rm -rf ./thinklabsdev/tcameraaiwebCIB \
+                                    && mv ./thinklabsdev/tcameraaiwebCI/ ./thinklabsdev/tcameraaiwebCIB",
+                                execTimeout: 600000,
+                                flatten: false,
+                                makeEmptyDirs: false,
+                                noDefaultExcludes: false,
+                                patternSeparator: '[, ]+',
+                                remoteDirectory: './thinklabsdev/tcameraaiwebCI',
+                                remoteDirectorySDF: false,
+                                removePrefix: '',
+                                sourceFiles: '*, src/, server/, webpack/, public/'
+                            )],
+                        usePromotionTimestamp: false,
+                        useWorkspaceInPromotion: false,
+                        verbose: false
+                    )
+                ])
+                telegramSend(message: 'Build Job tCameraAI Web - Nhan Hoa - STATUS: $BUILD_STATUS!', chatId: -740504133)
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@import "src/styles/scroll";
+
+#location-list {
+  .card-to-chuc .ant-tree-list-holder {
+    height: 720px;
+    @extend .custom-scrollbar;
+    @extend .custom-scrollbar-show;
+  }
+}

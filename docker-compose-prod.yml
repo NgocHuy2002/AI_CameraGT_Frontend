@@ -1,0 +1,15 @@
+version: "3.2"
+services:
+  web:
+    image: "tcameraaiweb:latest"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+    environment:
+      PORT: 80
+      NODE_ENV: "production"
+    ports:
+      - target: 80
+        published: 8000
+        mode: host
